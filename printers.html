@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printers</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .product-container {
+            justify-content: space-between; 
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            flex: 1; 
+            max-width: 200px;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product img {
+            width: 170px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%; 
+            transform: translate(-50%, 20%); 
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 200px;
+        }
+
+        .product:hover .product-description {
+            display: block;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 18px;
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <a href="Combination.html" class="back-button">&lt; Return to Main Page</a>
+    <div class="container">
+        <h1>Printers</h1>
+        <div class="product-container">
+            <div class="product">
+                <img src="printers_pics/inkjet.png" alt="Inkjet Printers">
+                <p>Inkjet Printers</p>
+                <div class="product-description">
+                    Affordable and versatile, ideal for home and office printing needs
+                </div>
+            </div>
+            <div class="product">
+                <img src="printers_pics/laser.png" alt="Laser Printers">
+                <p>Laser Printers</p>
+                <div class="product-description">
+                    Fast and efficient, suitable for high-volume printing and professional use
+                </div>
+            </div>
+            <div class="product">
+                <img src="printers_pics/photo.png" alt="Photo Printers">
+                <p>Photo Printers</p>
+                <div class="product-description">
+                    Specialized for printing high-quality photos, often with advanced paper handling and ink systems
+                </div>
+            </div>
+            <div class="product">
+                <img src="printers_pics/3D.png" alt="3D Printers">
+                <p>3D Printers</p>
+                <div class="product-description">
+                    Creates three-dimensional objects from digital designs, ideal for prototyping, modeling, and hobbyists
+                </div>
+            </div>
+            <div class="product">
+                <img src="printers_pics/scanner_printer.png" alt="Scanner/Printer Combo">
+                <p>Scanner/Printer Combo</p>
+                <div class="product-description">
+                    Multifunctional devices that combine scanning, printing, and often copying capabilities, perfect for home offices and small businesses
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

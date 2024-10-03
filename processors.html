@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processors</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .product-container {
+            justify-content: space-between; 
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            flex: 1; 
+            max-width: 200px; 
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product img {
+            width: 170px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            display: none;
+            position: absolute;
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, 20%); 
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 200px;
+        }
+
+        .product:hover .product-description {
+            display: block;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 18px;
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <a href="Combination.html" class="back-button">&lt; Return to Main Page</a>
+    <div class="container">
+        <h1>Processors</h1>
+        <div class="product-container">
+            <div class="product">
+                <img src="processors_pics/intel.png" alt="Intel Core">
+                <p>Intel Core i3, i5, i7, i9</p>
+                <div class="product-description">
+                    High-performance processors for laptops and desktops, offering varying levels of processing power and efficiency
+                </div>
+            </div>
+            <div class="product">
+                <img src="processors_pics/ryzen.png" alt="AMD Ryzen">
+                <p>AMD Ryzen 3, 5, 7, 9</p>
+                <div class="product-description">
+                    Competing processors from AMD, offering high-performance alternatives to Intel Core processors
+                </div>
+            </div>
+            <div class="product">
+                <img src="processors_pics/graphics.png" alt="Graphics Processing Units">
+                <p>Graphics Processing Units (GPUs)</p>
+                <div class="product-description">
+                    Specialized processors for graphics rendering and computing, essential for gaming, video editing, and other graphics-intensive tasks
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

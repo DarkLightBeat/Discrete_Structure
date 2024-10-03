@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitors</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .product-container {
+            justify-content: space-between; /* add this rule to center the product containers horizontally */
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            flex: 1; /* make each product container equally wide */
+            max-width: 200px; /* set a maximum width for each product container */
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product img {
+            width: 170px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            display: none;
+            position: absolute;
+            top: 50%; /* add this rule to center the description vertically */
+            left: 50%; /* add this rule to center the description horizontally */
+            transform: translate(-50%, 20%); /* add this rule to center the description */
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 200px;
+        }
+
+        .product:hover .product-description {
+            display: block;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 18px;
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <a href="Combination.html" class="back-button">&lt; Return to Main Page</a>
+    <div class="container">
+        <h1>Monitors</h1>
+        <div class="product-container">
+            <div class="product">
+                <img src="monitors_pics/gaming.png" alt="Gaming Monitors">
+                <p>Gaming Monitors</p>
+                <div class="product-description">
+                    Fast response times and high refresh rates for a smooth gaming experience
+                </div>
+            </div>
+            <div class="product">
+                <img src="monitors_pics/ultrawide.png" alt="UltraWide Monitors">
+                <p>Ultrawide Monitors</p>
+                <div class="product-description">
+                    Wider screen for multitasking, graphic design, and gaming with a broader field of view
+                </div>
+            </div>
+            <div class="product">
+                <img src="monitors_pics/4k.png" alt="4k Monitors">
+                <p>4kUltrawide Monitors</p>
+                <div class="product-description">
+                    High-resolution display for crisp and detailed images, ideal for professionals and gamers
+                </div>
+            </div>
+            <div class="product">
+                <img src="monitors_pics/curved.png" alt="Curved Monitors">
+                <p>Curved Monitors</p>
+                <div class="product-description">
+                    Immersive experience with a curved screen, reducing eye strain and enhancing engagement
+                </div>
+            </div>
+            <div class="product">
+                <img src="monitors_pics/portable.png" alt="Portable Monitors">
+                <p>Portable Monitors</p>
+                <div class="product-description">
+                    Compact and lightweight for working on the go, perfect for professionals and gamers who need flexibility
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

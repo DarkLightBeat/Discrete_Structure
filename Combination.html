@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSEUF Portal Technology Co.</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .category-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .category-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .category-item i {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .social-icons {
+            margin-top: 30px;
+        }
+
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 24px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #66CCCC; /* Change this to your desired link color */
+        }
+        
+        a:hover {
+            color: #33AAAA; /* Change this to your desired hover link color */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1> MSEUF </h1>
+        <h1>Technology Corporation</h1>
+        <br> 
+        <h2>CHOOSE A CATEGORY</h2>
+        <div class="category-grid">
+            <a href="printers.html" class="category-item"> 
+                <i class="fas fa-print"></i>
+                <p>Printers</p>
+            </a>
+            <a href="monitors.html" class="category-item"> 
+                <i class="fas fa-desktop"></i>
+                <p>Monitors</p>
+            </a>
+            <a href="headsets.html" class="category-item"> 
+                <i class="fas fa-headphones"></i>
+                <p>Headsets</p>
+            </a>
+            <a href="storage.html" class="category-item"> 
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Storage</p>
+            </a>
+            <a href="processors.html" class="category-item"> 
+                <i class="fas fa-microchip"></i>
+                <p>Processors</p>
+            </a>
+            <a href="mouse.html" class="category-item"> 
+                <i class="fas fa-mouse"></i>
+                <p>Mouse</p>
+            </a>
+        </div>
+
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
+    <script>
+        // Get all category items
+        const categoryItems = document.querySelectorAll('.category-item');
+
+        // Add event listener to each category item
+        categoryItems.forEach((item) => {
+        item.addEventListener('click', () => {
+        // Get the category name from the item
+        const categoryName = item.querySelector('p').textContent;
+
+        // Redirect to the corresponding category page
+        window.location.href = `/${categoryName.toLowerCase()}`;
+            });
+        });
+    </script>
+</body>
+</html>
