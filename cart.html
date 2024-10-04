@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .cart-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cart-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .cart-item p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .cart-item .price {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .cart-item .remove {
+            font-size: 18px;
+            color: red;
+            cursor: pointer;
+        }
+
+        .cart-item .remove:hover {
+            color: #ff0000;
+        }
+
+        .cart-total {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .checkout-button {
+            font-size: 24px;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .checkout-button:hover {
+            background-color: #3e8e41;
+        }
+
+        .back-button {
+            font-size: 24px;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Shopping Cart</h1>
+        <ul class="cart-list" id="cart-list"></ul>
+        <p class="cart-total" id="cart-total">Total: ₱0</p>
+        <a href="#" class="checkout-button" id="checkout-button">Checkout</a>
+        <a href="Combination.html" class="back-button">Back to Main</a>
+    </div>
+
+    <script>
+        // Function to display the shopping cart
+        function displayCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartList = document.getElementById('cart-list');
+            const cartTotal = document.getElementById('cart-total');
+        
+            cartList.innerHTML = '';
+            let total = 0;
+            cart.forEach((item) => {
+                const cartItem = document.createElement('li');
+                cartItem.classList.add('cart-item');
+                const img = document.createElement('img');
+                img.src = item.image; // Use the stored image URL
+                const name = document.createElement('p');
+                name.textContent = item.name;
+                const price = document.createElement('p');
+                price.classList.add('price');
+                price.textContent = `₱${item.price}`;
+                const remove = document.createElement('span');
+                remove.classList.add('remove');
+                remove.textContent = 'Remove';
+                remove.addEventListener('click', () => {
+                    // Remove the item from the cart
+                    const index = cart.indexOf(item);
+                    cart.splice(index, 1);
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    displayCart();
+                });
+                cartItem.appendChild(img);
+                cartItem.appendChild(name);
+                cartItem.appendChild(price);
+                cartItem.appendChild(remove);
+                cartList.appendChild(cartItem);
+                total += item.price;
+            });
+            cartTotal.textContent = `Total: ₱${total.toFixed(2)}`;
+        }
+
+        // Function to handle the checkout button
+        function handleCheckout() {
+                    // Clear the cart
+        localStorage.setItem('cart', JSON.stringify([]));
+        // Redirect to the main page
+        window.location.href = 'Combination.html';
+    }
+
+    // Get the checkout button
+    const checkoutButton = document.getElementById('checkout-button');
+
+    // Add event listener to the checkout button
+    checkoutButton.addEventListener('click', handleCheckout);
+
+    // Call the displayCart function when the page loads
+    displayCart();
+</script>
+</body>
+</html>
