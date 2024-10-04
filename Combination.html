@@ -69,6 +69,18 @@
         a:hover {
             color: #33AAAA; /* Change this to your desired hover link color */
         }
+
+        .view-cart-button {
+            font-size: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            color: rgb(8, 113, 173);
+            margin-top: 30px;
+        }
+
+        .view-cart-button:hover {
+            color: #33AAAA;
+        }
     </style>
 </head>
 <body>
@@ -104,11 +116,8 @@
             </a>
         </div>
 
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-        </div>
+        <a href="cart.html" class="view-cart-button">View Cart</a>
+
     </div>
 
     <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
@@ -118,12 +127,12 @@
 
         // Add event listener to each category item
         categoryItems.forEach((item) => {
-        item.addEventListener('click', () => {
-        // Get the category name from the item
-        const categoryName = item.querySelector('p').textContent;
+            item.addEventListener('click', () => {
+                // Get the category name from the item
+                const categoryName = item.querySelector('p').textContent;
 
-        // Redirect to the corresponding category page
-        window.location.href = `/${categoryName.toLowerCase()}`;
+                // Redirect to the corresponding category page
+                window.location.href = `/${categoryName.toLowerCase()}`;
             });
         });
     </script>
