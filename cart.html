@@ -114,7 +114,6 @@
     </div>
 
     <script>
-        // Function to display the shopping cart
         function displayCart() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const cartList = document.getElementById('cart-list');
@@ -126,7 +125,7 @@
                 const cartItem = document.createElement('li');
                 cartItem.classList.add('cart-item');
                 const img = document.createElement('img');
-                img.src = item.image; // Use the stored image URL
+                img.src = item.image; 
                 const name = document.createElement('p');
                 name.textContent = item.name;
                 const price = document.createElement('p');
@@ -136,7 +135,6 @@
                 remove.classList.add('remove');
                 remove.textContent = 'Remove';
                 remove.addEventListener('click', () => {
-                    // Remove the item from the cart
                     const index = cart.indexOf(item);
                     cart.splice(index, 1);
                     localStorage.setItem('cart', JSON.stringify(cart));
@@ -152,21 +150,17 @@
             cartTotal.textContent = `Total: ₱${total.toFixed(2)}`;
         }
 
-        // Function to handle the checkout button
         function handleCheckout() {
-                    // Clear the cart
+
         localStorage.setItem('cart', JSON.stringify([]));
-        // Redirect to the main page
+
         window.location.href = 'Combination.html';
     }
 
-    // Get the checkout button
     const checkoutButton = document.getElementById('checkout-button');
 
-    // Add event listener to the checkout button
     checkoutButton.addEventListener('click', handleCheckout);
 
-    // Call the displayCart function when the page loads
     displayCart();
 </script>
 </body>
