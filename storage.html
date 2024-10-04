@@ -29,14 +29,14 @@
         }
 
         .product-container {
-            justify-content: space-between; /* add this rule to center the product containers horizontally */
+            justify-content: space-between;
             display: flex;
             flex-wrap: wrap;
         }
 
         .product {
-            flex: 1; /* make each product container equally wide */
-            max-width: 200px; /* set a maximum width for each product container */
+            flex: 1;
+            max-width: 200px; 
             margin: 20px;
             padding: 20px;
             border-radius: 10px;
@@ -54,9 +54,22 @@
         .product-description {
             display: none;
             position: absolute;
-            top: 50%; /* add this rule to center the description vertically */
-            left: 50%; /* add this rule to center the description horizontally */
-            transform: translate(-50%, 20%); /* add this rule to center the description */
+            top: 50%;
+            left: 50%; 
+            transform: translate(-50%, 115%);
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 200px;
+        }
+
+        .product-description-container {
+            display: none;
+            position: absolute;
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, 100%); 
             background-color: rgba(0, 0, 0, 0.9);
             padding: 10px;
             border-radius: 10px;
@@ -66,6 +79,27 @@
 
         .product:hover .product-description {
             display: block;
+        }
+
+        .product:hover .product-description-container {
+            display: block;
+        }
+
+        .buy-now-button {
+            position: absolute;
+            bottom: -25px;
+            right: 50px;
+            font-size: 18px;
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .buy-now-button:hover {
+            background-color: #3e8e41;
         }
 
         .back-button {
@@ -89,13 +123,15 @@
                 <div class="product-description">
                     Traditional storage devices using spinning disks and mechanical heads, offering high capacity at a lower cost
                 </div>
+                <a href="#" class="buy-now-button" data-price="13395.00" data-image="storage_pics/hard_disk.png">Buy Now</a>
             </div>
             <div class="product">
                 <img src="storage_pics/solid_state.png" alt="Solid State Drives">
                 <p>Solid State Drives</p>
-                <div class="product-description">
+                <div class="product-description-container">
                     Fast and efficient storage devices using flash memory, ideal for speeding up system performance and responsiveness
                 </div>
+                <a href="#" class="buy-now-button" data-price="13395.00" data-image="storage_pics/solid_state.png">Buy Now</a>
             </div>
             <div class="product">
                 <img src="storage_pics/external_drive.png" alt="External Hard Drives">
@@ -103,6 +139,7 @@
                 <div class="product-description">
                     Portable storage devices for backing up and transferring data, often used for data protection and sharing
                 </div>
+                <a href="#" class="buy-now-button" data-price="13395.00" data-image="storage_pics/external_drive.png">Buy Now</a>
             </div>
             <div class="product">
                 <img src="storage_pics/flash_drive.png" alt="USB Flash Drive">
@@ -110,6 +147,7 @@
                 <div class="product-description">
                     Small, portable storage devices that plug into USB ports, ideal for transferring files and data between devices
                 </div>
+                <a href="#" class="buy-now-button" data-price="13395.00" data-image="storage_pics/flash_drive.png">Buy Now</a>
             </div>
             <div class="product">
                 <img src="storage_pics/memory_cards.png" alt="Memory Cards">
@@ -117,8 +155,66 @@
                 <div class="product-description">
                     Small, portable storage devices used in cameras, smartphones, and other devices, offering varying capacities and speeds
                 </div>
+                <a href="#" class="buy-now-button" data-price="13395.00" data-image="storage_pics/memory_cards.png">Buy Now</a>
             </div>
         </div>
     </div>
+    <script>
+        const buyNowButtons = document.querySelectorAll('.buy-now-button');
+
+        buyNowButtons.forEach((button) => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault(); 
+
+            const productName = button.parentNode.querySelector('p').textContent;
+            const productPrice = parseFloat(button.getAttribute('data-price'));
+            const productImage = button.getAttribute('data-image'); 
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            const existingProduct = cart.find((item) => item.name === productName);
+            if (existingProduct) {
+                alert(`You have already added ${productName} to your cart.`);
+                return;
+            }
+
+            cart.push({ name: productName, price: productPrice, image: productImage });
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            const cartCount = document.querySelector('.cart-count');
+            if (cartCount) {
+                cartCount.textContent = cart.length;
+            }
+
+            alert(`Added ${productName} to cart!`);
+            });
+        });
+
+        function displayCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartList = document.getElementById('cart-list');
+            const cartTotal = document.getElementById('cart-total');
+
+            cartList.innerHTML = '';
+            let total = 0;
+            cart.forEach((item) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} - ₱${item.price}`;
+                cartList.appendChild(listItem);
+                total += item.price;
+            });
+            cartTotal.textContent = `Total: ₱${total}`;
+        }
+
+        displayCart();
+
+        const viewCartButtons = document.querySelectorAll('.view-cart-button');
+
+        viewCartButtons.forEach((button) => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault(); 
+                displayCart();
+            });
+        });
+    </script>
 </body>
 </html>
