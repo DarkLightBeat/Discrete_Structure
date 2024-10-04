@@ -56,7 +56,46 @@
             position: absolute;
             top: 50%;
             left: 50%; 
-            transform: translate(-50%, 20%); 
+            transform: translate(-50%, 175%); 
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 200px;
+        }
+
+        .product-description-container {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%; 
+            transform: translate(-50%, 140%); 
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 200px;
+        }
+
+        .product-description-container1 {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%; 
+            transform: translate(-50%, 115%); 
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 200px;
+        }
+
+        .product-description-container2 {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%; 
+            transform: translate(-50%, 100%); 
             background-color: rgba(0, 0, 0, 0.9);
             padding: 10px;
             border-radius: 10px;
@@ -66,6 +105,35 @@
 
         .product:hover .product-description {
             display: block;
+        }
+        
+        .product:hover .product-description-container {
+            display: block;
+        }
+
+        .product:hover .product-description-container1 {
+            display: block;
+        }
+
+        .product:hover .product-description-container2 {
+            display: block;
+        }
+
+        .buy-now-button {
+            position: absolute;
+            bottom: -25px;
+            right: 50px;
+            font-size: 18px;
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .buy-now-button:hover {
+            background-color: #3e8e41;
         }
 
         .back-button {
@@ -89,6 +157,7 @@
                 <div class="product-description">
                     Affordable and versatile, ideal for home and office printing needs
                 </div>
+                <a href="#" class="buy-now-button" data-price="16999.00" data-image="printers_pics/inkjet.png">Buy Now</a>
             </div>
             <div class="product">
                 <img src="printers_pics/laser.png" alt="Laser Printers">
@@ -96,29 +165,91 @@
                 <div class="product-description">
                     Fast and efficient, suitable for high-volume printing and professional use
                 </div>
+                <a href="#" class="buy-now-button" data-price="32189.00" data-image="printers_pics/laser.png">Buy Now</a>
             </div>
             <div class="product">
                 <img src="printers_pics/photo.png" alt="Photo Printers">
                 <p>Photo Printers</p>
-                <div class="product-description">
+                <div class="product-description-container">
                     Specialized for printing high-quality photos, often with advanced paper handling and ink systems
                 </div>
+                <a href="#" class="buy-now-button" data-price="48000.00" data-image="printers_pics/photo.png">Buy Now</a>
             </div>
             <div class="product">
                 <img src="printers_pics/3D.png" alt="3D Printers">
                 <p>3D Printers</p>
-                <div class="product-description">
+                <div class="product-description-container1">
                     Creates three-dimensional objects from digital designs, ideal for prototyping, modeling, and hobbyists
                 </div>
+                <a href="#" class="buy-now-button" data-price="16855.00" data-image="printers_pics/3D.png">Buy Now</a>
             </div>
             <div class="product">
                 <img src="printers_pics/scanner_printer.png" alt="Scanner/Printer Combo">
                 <p>Scanner/Printer Combo</p>
-                <div class="product-description">
+                <div class="product-description-container2">
                     Multifunctional devices that combine scanning, printing, and often copying capabilities, perfect for home offices and small businesses
                 </div>
+                <a href="#" class="buy-now-button" data-price="66390.00" data-image="printers_pics/scanner_printer.png">Buy Now</a>
             </div>
         </div>
     </div>
+    <script>
+        const buyNowButtons = document.querySelectorAll('.buy-now-button');
+
+        buyNowButtons.forEach((button) => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault(); 
+
+            const productName = button.parentNode.querySelector('p').textContent;
+            const productPrice = parseFloat(button.getAttribute('data-price')); 
+            const productImage = button.getAttribute('data-image'); 
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            const existingProduct = cart.find((item) => item.name === productName);
+            if (existingProduct) {
+                alert(`You have already added ${productName} to your cart.`);
+                return;
+            }
+
+            cart.push({ name: productName, price: productPrice, image: productImage });
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            const cartCount = document.querySelector('.cart-count');
+            if (cartCount) {
+                cartCount.textContent = cart.length;
+            }
+
+            alert(`Added ${productName} to cart!`);
+            });
+        });
+
+        function displayCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartList = document.getElementById('cart-list');
+            const cartTotal = document.getElementById('cart-total');
+
+            cartList.innerHTML = '';
+            let total = 0;
+            cart.forEach((item) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} - ₱${item.price}`;
+                cartList.appendChild(listItem);
+                total += item.price;
+            });
+            cartTotal.textContent = `Total: ₱${total}`;
+        }
+
+        
+        displayCart();
+
+        const viewCartButtons = document.querySelectorAll('.view-cart-button');
+
+        viewCartButtons.forEach((button) => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault(); 
+                displayCart();
+            });
+        });
+    </script>
 </body>
 </html>
