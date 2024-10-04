@@ -63,11 +63,11 @@
 
         a {
             text-decoration: none;
-            color: #66CCCC; /* Change this to your desired link color */
+            color: #66CCCC;
         }
         
         a:hover {
-            color: #33AAAA; /* Change this to your desired hover link color */
+            color: #33AAAA;
         }
 
         .view-cart-button {
@@ -122,16 +122,12 @@
 
     <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
     <script>
-        // Get all category items
         const categoryItems = document.querySelectorAll('.category-item');
 
-        // Add event listener to each category item
         categoryItems.forEach((item) => {
             item.addEventListener('click', () => {
-                // Get the category name from the item
                 const categoryName = item.querySelector('p').textContent;
 
-                // Redirect to the corresponding category page
                 window.location.href = `/${categoryName.toLowerCase()}`;
             });
         });
