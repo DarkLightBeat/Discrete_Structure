@@ -29,14 +29,14 @@
         }
 
         .product-container {
-            justify-content: space-between; /* add this rule to center the product containers horizontally */
+            justify-content: space-between; 
             display: flex;
             flex-wrap: wrap;
         }
 
         .product {
-            flex: 1; /* make each product container equally wide */
-            max-width: 200px; /* set a maximum width for each product container */
+            flex: 1; 
+            max-width: 200px; 
             margin: 20px;
             padding: 20px;
             border-radius: 10px;
@@ -54,9 +54,9 @@
         .product-description {
             display: none;
             position: absolute;
-            top: 50%; /* add this rule to center the description vertically */
-            left: 50%; /* add this rule to center the description horizontally */
-            transform: translate(-50%, 125%); /* add this rule to center the description */
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, 125%); 
             background-color: rgba(0, 0, 0, 0.9);
             padding: 10px;
             border-radius: 10px;
@@ -67,9 +67,9 @@
         .product-description-container {
             display: none;
             position: absolute;
-            top: 50%; /* add this rule to center the description vertically */
-            left: 50%; /* add this rule to center the description horizontally */
-            transform: translate(-50%, 150%); /* add this rule to center the description */
+            top: 50%;
+            left: 50%; 
+            transform: translate(-50%, 150%); 
             background-color: rgba(0, 0, 0, 0.9);
             padding: 10px;
             border-radius: 10px;
@@ -161,22 +161,17 @@
     </div>
 
     <script>
-    
-        // Get all buy now buttons
         const buyNowButtons = document.querySelectorAll('.buy-now-button');
 
-        // Add event listener to each buy now button
         buyNowButtons.forEach((button) => {
             button.addEventListener('click', (e) => {
-                e.preventDefault(); // Prevent the default link behavior
+                e.preventDefault(); 
 
-            // Add the product to the shopping cart
             const productName = button.parentNode.querySelector('p').textContent;
-            const productPrice = parseFloat(button.getAttribute('data-price')); // Get the price from the data-price attribute
-            const productImage = button.getAttribute('data-image'); // Get the image URL from the data-image attribute
+            const productPrice = parseFloat(button.getAttribute('data-price')); 
+            const productImage = button.getAttribute('data-image'); 
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-            // Check if the product is already in the cart
             const existingProduct = cart.find((item) => item.name === productName);
             if (existingProduct) {
                 alert(`You have already added ${productName} to your cart.`);
@@ -186,18 +181,15 @@
             cart.push({ name: productName, price: productPrice, image: productImage });
             localStorage.setItem('cart', JSON.stringify(cart));
 
-            // Update the shopping cart count
             const cartCount = document.querySelector('.cart-count');
             if (cartCount) {
                 cartCount.textContent = cart.length;
             }
 
-            // Alert the user that the product has been added to the cart
             alert(`Added ${productName} to cart!`);
             });
         });
 
-        // Function to display the shopping cart
         function displayCart() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const cartList = document.getElementById('cart-list');
@@ -214,16 +206,14 @@
             cartTotal.textContent = `Total: ₱${total}`;
         }
 
-        // Call the displayCart function when the page loads
+
         displayCart();
 
-        // Get all view cart buttons
         const viewCartButtons = document.querySelectorAll('.view-cart-button');
 
-        // Add event listener to each view cart button
         viewCartButtons.forEach((button) => {
             button.addEventListener('click', (e) => {
-                e.preventDefault(); // Prevent the default link behavior
+                e.preventDefault(); 
                 displayCart();
             });
         });
