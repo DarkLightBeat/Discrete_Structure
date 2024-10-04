@@ -56,7 +56,33 @@
             position: absolute;
             top: 50%; 
             left: 50%; 
-            transform: translate(-50%, 20%); 
+            transform: translate(-50%, 125%); 
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 200px;
+        }
+
+        .product-description-container {
+            display: none;
+            position: absolute;
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, 150%); 
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 200px;
+        }
+
+        .product-description-container1 {
+            display: none;
+            position: absolute;
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, 108%); 
             background-color: rgba(0, 0, 0, 0.9);
             padding: 10px;
             border-radius: 10px;
@@ -66,6 +92,32 @@
 
         .product:hover .product-description {
             display: block;
+        }
+
+        .product:hover .product-description-container {
+            display: block;
+        }
+
+        .product:hover .product-description-container1 {
+            display: block;
+        }
+
+        .buy-now-button {
+            position: absolute;
+            bottom: -25px;
+            right: 50px;
+            font-size: 18px;
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: auto;
+        }
+
+        .buy-now-button:hover {
+            background-color: #3e8e41;
         }
 
         .back-button {
@@ -89,22 +141,82 @@
                 <div class="product-description">
                     High-performance processors for laptops and desktops, offering varying levels of processing power and efficiency
                 </div>
+                <a href="#" class="buy-now-button" data-price="6695.00" data-image="processors_pics/intel.png">Buy Now</a>
             </div>
             <div class="product">
                 <img src="processors_pics/ryzen.png" alt="AMD Ryzen">
                 <p>AMD Ryzen 3, 5, 7, 9</p>
-                <div class="product-description">
+                <div class="product-description-container">
                     Competing processors from AMD, offering high-performance alternatives to Intel Core processors
                 </div>
+                <a href="#" class="buy-now-button" data-price="7295.00" data-image="processors_pics/ryzen.png">Buy Now</a>
             </div>
             <div class="product">
                 <img src="processors_pics/graphics.png" alt="Graphics Processing Units">
                 <p>Graphics Processing Units (GPUs)</p>
-                <div class="product-description">
+                <div class="product-description-container1">
                     Specialized processors for graphics rendering and computing, essential for gaming, video editing, and other graphics-intensive tasks
                 </div>
+                <a href="#" class="buy-now-button" data-price="13395.00" data-image="processors_pics/graphics.png">Buy Now</a>
             </div>
         </div>
     </div>
+    <script>
+        const buyNowButtons = document.querySelectorAll('.buy-now-button');
+
+        buyNowButtons.forEach((button) => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault(); 
+
+            const productName = button.parentNode.querySelector('p').textContent;
+            const productPrice = parseFloat(button.getAttribute('data-price')); 
+            const productImage = button.getAttribute('data-image');
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            const existingProduct = cart.find((item) => item.name === productName);
+            if (existingProduct) {
+                alert(`You have already added ${productName} to your cart.`);
+                return;
+            }
+
+            cart.push({ name: productName, price: productPrice, image: productImage });
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            const cartCount = document.querySelector('.cart-count');
+            if (cartCount) {
+                cartCount.textContent = cart.length;
+            }
+
+            alert(`Added ${productName} to cart!`);
+            });
+        });
+        
+        function displayCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartList = document.getElementById('cart-list');
+            const cartTotal = document.getElementById('cart-total');
+
+            cartList.innerHTML = '';
+            let total = 0;
+            cart.forEach((item) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} - ₱${item.price}`;
+                cartList.appendChild(listItem);
+                total += item.price;
+            });
+            cartTotal.textContent = `Total: ₱${total}`;
+        }
+
+        displayCart();
+
+        const viewCartButtons = document.querySelectorAll('.view-cart-button');
+
+        viewCartButtons.forEach((button) => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault(); 
+                displayCart();
+            });
+        });
+    </script>
 </body>
 </html>
