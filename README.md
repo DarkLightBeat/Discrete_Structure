@@ -1,34 +1,83 @@
-<h1> MSEUF Portal Technology Co. </h1> 
+<h1> Documentation for MSEUF Portal Technology Co. </h1>
 
-This is a basic HTML, CSS, and JavaScript for a technology corporation portal. The portal allows users to choose a category and redirects them to the corresponding category page.
+<h2> Overview </h2>
 
-<h3> displayCart() Function </h3>
+The MSEUF Portal Technology Co. is a web-based application that allows users to browse and purchase various technology products. The application consists of two main pages: the main page and the shopping cart page.
 
-The displayCart() function is responsible for displaying the shopping cart items. 
-Here's what it does:
+<h2> Main Page </h2>
 
-Retrieves the cart data from localStorage using JSON.parse(localStorage.getItem('cart')). If the cart is empty, it defaults to an empty array [].
-<br>
-Gets references to the cart-list and cart-total elements using document.getElementById.
-<br>
-Clears the cart-list element's inner HTML.
-<br>
-Loops through each item in the cart using cart.forEach((item) => { ... }).
-<br>
-For each item, it creates a new li element with the class cart-item and appends it to the cart-list element.
-<br>
-Creates an img element with the item's image URL, a p element with the item's name, a p element with the item's price, and a span element with the "Remove" text.
-<br>
-Adds an event listener to the "Remove" span element to remove the item from the cart when clicked.
-<br>
-Calculates the total price of the items in the cart and updates the cart-total element's text content.
-<br>
-<br>
-<h3> handleCheckout() Function </h3>
+The main page displays a list of categories, each representing a type of technology product. Users can click on a category to view the corresponding products. The page also includes a "View Cart" button that allows users to view their shopping cart.
 
-The handleCheckout() function is responsible for handling the checkout functionality. 
-Here's what it does:
+<h2> Shopping Cart Page </h2>
 
-Clears the cart by setting localStorage to an empty array [].
-<br>
-Redirects the user to the main page (Combination.html) using window.location.href.
+The shopping cart page displays a list of products added to the cart, along with their prices and a "Remove" button to remove each item. The page also displays the total cost of the items in the cart and includes a "Checkout" button to complete the purchase.
+
+<h1> Code Explanation </h1>
+
+<h2> Main Page </h2>
+
+The main page uses HTML, CSS, and JavaScript to create a responsive and interactive user interface. The CSS styles are used to create a modern and visually appealing design. The JavaScript code is used to add event listeners to the category items, which redirect the user to the corresponding category page when clicked.
+
+<h2> Shopping Cart Page </h2>
+
+The shopping cart page uses HTML, CSS, and JavaScript to create a responsive and interactive user interface. The CSS styles are used to create a modern and visually appealing design. The JavaScript code is used to:
+
+
+<li> Display the shopping cart items and their prices </li>
+<li> Update the total cost of the items in the cart </li>
+<li> Remove items from the cart when the "Remove" button is clicked </li>
+<li> Clear the cart and redirect the user to the main page when the "Checkout" button is clicked </li>
+
+<h1> Logic of the Code </h1>
+
+
+<h2> The code uses the following logic: </h2>
+
+<ol> The main page uses JavaScript to add event listeners to the category items, which redirect the user to the corresponding category page when clicked. </ol>
+<ol> The shopping cart page uses JavaScript to display the shopping cart items and their prices, update the total cost of the items in the cart, and remove items from the cart when the "Remove" button is clicked. </ol>
+<ol> The shopping cart page also uses JavaScript to clear the cart and redirect the user to the main page when the "Checkout" button is clicked. </ol>
+
+<h1> User Interaction </h1>
+
+<h2> Users can interact with the application by: </h2>
+
+<ol> Browsing the categories on the main page and clicking on a category to view the corresponding products </ol>
+<ol> Adding products to the shopping cart by clicking on the category item </ol>
+<ol> Viewing the shopping cart and removing items by clicking on the "Remove" button </ol>
+<ol> Completing the purchase by clicking on the "Checkout" button </ol>
+
+<h1> Running the System </h1>
+
+To run the system, simply open the HTML files in a web browser. The application does not require any command-line interface (CLI) or graphical user interface (GUI) inputs.
+
+<h1> Formula Used </h1>
+
+The application does not use any specific formulas, as it is a simple e-commerce application. However, the total cost of the items in the cart is calculated by summing up the prices of each item.
+
+<h1> Additional Pages </h1>
+
+<p> The application also includes additional pages for each category, which display a list of products and their prices. These pages use the same HTML, CSS, and JavaScript code as the main page and shopping cart page. </p>
+
+<h3> Headsets Page </h3>
+
+The Headsets page displays a list of headsets and their prices. The page includes a "Buy Now" button for each product, which adds the product to the shopping cart when clicked.
+
+<h3> Monitors Page </h3>
+
+The Monitors page displays a list of monitors and their prices. The page includes a "Buy Now" button for each product, which adds the product to the shopping cart when clicked.
+
+<h3> Mouse Page </h3>
+
+The Mouse page displays a list of mice and their prices. The page includes a "Buy Now" button for each product, which adds the product to the shopping cart when clicked.
+
+<h3> Printers Page </h3>
+
+The Printers page displays a list of printers and their prices. The page includes a "Buy Now" button for each product, which adds the product to the shopping cart when clicked.
+
+<h3> Processors Page </h3>
+
+The Processors page displays a list of processors and their prices. The page includes a "Buy Now" button for each product, which adds the product to the shopping cart when clicked.
+
+<h3> Storage Page </h3>
+
+The Storage page displays a list of storage devices and their prices. The page includes a "Buy Now" button for each product, which adds the product to the shopping cart when clicked.
