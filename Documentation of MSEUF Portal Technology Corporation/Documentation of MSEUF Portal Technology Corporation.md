@@ -12,6 +12,8 @@ The main page displays the list of categories, each representing a type of techn
 
 These are different pages in the list of product that includes the different kind of printers, monitors, headsets, storage, processors, and mouse. Each product includes a “Buy Now” button, which adds the product to the shopping cart when clicked.
 
+The users can return to the main page by clicking the "Return to main page", if they want to check other products.
+
 ![](Aspose.Words.f45b6e4c-0e96-485a-b062-9b10b6e0f3ca.002.png)
 
 ![](Aspose.Words.f45b6e4c-0e96-485a-b062-9b10b6e0f3ca.003.png)
