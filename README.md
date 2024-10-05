@@ -81,3 +81,29 @@ The Processors page displays a list of processors and their prices. The page inc
 <h3> Storage Page </h3>
 
 The Storage page displays a list of storage devices and their prices. The page includes a "Buy Now" button for each product, which adds the product to the shopping cart when clicked.
+
+<h2> Adding Products to the Cart </h2>
+
+When a buy-now-button is clicked, the script:
+
+<li> Prevents the default behavior of the button using e.preventDefault(). </li>
+<li> Retrieves the product name, price, and image from the button's parent element and attributes. </li>
+<li> Checks if the product is already in the cart by searching for an item with the same name in the cart array. If it exists, an alert is displayed, and the function returns. </li>
+<li> If the product is not in the cart, it is added to the cart array with its name, price, and image. </li>
+<li> The cart array is then stored in local storage using localStorage.setItem. </li>
+<li> The cart count is updated by selecting the element with the class cart-count and setting its text content to the length of the cart array. </li>
+<li> An alert is displayed to confirm that the product has been added to the cart. </li>
+
+<h2> Displaying the Cart Contents </h2>
+The displayCart function is responsible for displaying the contents of the cart, the purpose of this is to:
+
+<li> Retrieves the cart array from local storage using JSON.parse and localStorage.getItem. </li>
+<li> Selects the elements with the IDs cart-list and cart-total. </li>
+<li> Clears the inner HTML of the cart-list element. </li>
+<li> Loops through each item in the cart array and creates a new list item element with the product name and price. </li>
+<li> Appends the list item to the cart-list element. </li>
+<li> Calculates the total price of the items in the cart and sets the text content of the cart-total element to the total price.
+
+<h2> View Cart Button </h2>
+When a view cart button is clicked, It display. </li>
+
